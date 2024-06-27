@@ -1,1 +1,28 @@
+name: let's create our first workflow
 
+# specifying the events that this workflow is going to trigered on
+on :
+  push: # when we push this work flow pushed to this brnach(s) we want to triger 
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+# her by dispatching the workflow we're gonna have a button in UI to run this workflow
+workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      -uses: actions/checkout@v2 # her we are utelizing an action that has been created by github
+      - name: hey guys
+      run: echo "Hey party guys"
+      shell: bash
+
+  googdbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: see you later
+      run: echo "See you next time"
+      shell: bash
