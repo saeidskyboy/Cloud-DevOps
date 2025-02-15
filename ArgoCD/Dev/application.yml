@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/saeidskyboy/Cloud-DevOps.git
+    targetRevision: HEAD
+    path: Dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myapp
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated: # it will let ArgoCD to monitor the git and fetch the changes and appy on cluster
+      prune: true # if we deleted a whole service.yml, ArgoCD will delete it from cluster
+      selfHeal: true # if we want ArgoCD to undo/overwrite any manual changes in our cluster, we need to have this option enabled
