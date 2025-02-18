@@ -1,5 +1,5 @@
 ---
-#adding a comment as well
+
 - hosts: all
   become: true
   pre_tasks:
@@ -18,14 +18,14 @@
         update_cache: yes
       change_when: fals
       when: ansible_distribution == "ubuntu"
-        # do more changes for our second commit
 
+- hosts: all
   become: true
   roles:
     - base
-      #move it here
+
 - hosts: webservers
-  become:
+  become: true
   roles:
     - webservers
 
