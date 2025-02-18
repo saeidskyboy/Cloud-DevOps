@@ -1,5 +1,5 @@
 ---
-
+#adding a comment as well
 - hosts: all
   become: true
   pre_tasks:
@@ -19,11 +19,11 @@
       change_when: fals
       when: ansible_distribution == "ubuntu"
 
-- hosts: all
+
   become: true
   roles:
     - base
-
+      #move it here
 - hosts: webservers
   become: true
   roles:
