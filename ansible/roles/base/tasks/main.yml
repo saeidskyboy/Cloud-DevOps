@@ -1,0 +1,4 @@
+- name: add ssh key for saeid
+  authorized_key:
+    user: saeid
+    key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINc8EufKVmFrzMKZYQhsIUXtrY0woKKiKKwmvTJULyS6 lpiclinux33@ansible 

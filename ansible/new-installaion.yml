@@ -1,0 +1,35 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+    - name: update repository index (debian)
+      tags: always
+      apt:
+        update_cache: yes
+      change_when: fals
+      when: ansible_distribution == "debian"
+
+
+    - name: update repository index (ubuntu)
+      tags: always
+      apt:
+        update_cache: yes
+      change_when: fals
+      when: ansible_distribution == "ubuntu"
+
+- hosts: all
+  become: true
+  roles:
+    - base
+
+- hosts: webservers
+  become: true
+  roles:
+    - webservers
+
+- hosts: dbservers
+  become: true
+  roles:
+    - dbservers

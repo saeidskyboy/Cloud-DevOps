@@ -41,6 +41,14 @@
       state: latest
     when: ansible_distribution == "CentOS"
 
+  - name: change a line in a file in our config file
+    tags: ubuntu, debian
+    lineinfile:
+      path: /etc/apache2/conf-available/security.conf
+      regexp: '^# Allow TRACE method'
+      line: # Allow TRACE method - Test replacing a line in a file
+    when: ansible_distribution == "debian"
+
   - name: copy default html file fo site
     tags: apache, debian, webservers
     copy:
